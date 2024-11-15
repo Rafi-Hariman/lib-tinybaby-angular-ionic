@@ -27,8 +27,13 @@ import { Modal3monthComponent } from '../../html-service/modal/modal3month/modal
 import { ProfileDetailComponent } from '../../html-service/section/profile-detail/profile-detail.component';
 import { ModalheaderprofiledetailComponent } from '../../html-service/modal/modal-template/modalheaderprofiledetail/modalheaderprofiledetail.component';
 
-
-
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatIconModule} from '@angular/material/icon';
+import { Chart } from 'chart.js';
 
 @NgModule({
   declarations: [
@@ -61,6 +66,12 @@ import { ModalheaderprofiledetailComponent } from '../../html-service/modal/moda
     IonicModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatStepperModule,
+    MatIconModule,
+
   ],
   exports: [FooterComponent,
     HeaderComponent,
@@ -85,6 +96,9 @@ import { ModalheaderprofiledetailComponent } from '../../html-service/modal/moda
     Modal3monthComponent,
     ProfileDetailComponent,
     ModalheaderprofiledetailComponent
+  ],
+  providers: [
+    {provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}},
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
