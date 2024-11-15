@@ -1,0 +1,40 @@
+.ter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cen {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #159f2d;
+    border-radius: 8px;
+    width: 150px;
+    height: 20px;
+}
+
+.text {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+.wa {
+  color: green;
+}
+
+.ig {
+  color: #d624bb;
+}
+
+.fb {
+  color: #135cb6;
+}
+
+.twit {
+  color: #00aced;
+}

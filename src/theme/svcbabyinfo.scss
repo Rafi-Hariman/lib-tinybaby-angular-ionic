@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
+* {
+  box-sizing: border-box;
+}
+.wrap {
+  min-height: 100vh;
+  font-family: "Fira Sans", sans-serif;
+  display: flex;
+}
+
+.title span {
+  --total: calc(var(--duration) + var(--delay));
+  position: relative;
+  display: block;
+  color: transparent;
+  overflow: hidden;
+  animation: revealText 1s var(--total) forwards;
+}
+
+.title span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: rgb(6, 216, 192);
+  animation: rollIn var(--duration) var(--delay) forwards,
+    rollOut var(--duration) var(--total) forwards;
+}
+
+.title span:nth-child(2)::after {
+  border-top: 3px solid #f7d217;
+}
+
+@keyframes revealText {
+  to {
+    color: #000;
+  }
+}
+
+@keyframes rollIn {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rollOut {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(105%);
+  }
+}

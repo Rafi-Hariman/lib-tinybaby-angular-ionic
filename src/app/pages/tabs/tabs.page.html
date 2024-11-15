@@ -1,0 +1,21 @@
+<ion-tabs>
+  <div class="sc-bottom-bar" #menuBar>
+    <a class="sc-menu-item" href="/page/data" (click)="selectMenu($event, 0)">
+      <ion-icon name="clipboard-outline"></ion-icon>
+    </a>
+    <a class="sc-menu-item" href="/page/baby" (click)="selectMenu($event, 1)">
+      <ion-icon name="happy-outline" style="margin-right: -1px;"></ion-icon>
+    </a>
+    <a class="sc-menu-item" href="/page/home" (click)="selectMenu($event, 2)">
+      <ion-icon name="home-outline" style="margin-left: -1px;"></ion-icon>
+    </a>
+    <a class="sc-menu-item" href="/page/target" (click)="selectMenu($event, 3)">
+      <ion-icon name="body-outline" style="margin-left: -1px;"></ion-icon>
+    </a>
+    <a class="sc-menu-item" href="/page/settings" (click)="selectMenu($event, 4)">
+      <ion-icon name="cog-outline" style="margin-left: -1px;"></ion-icon>
+    </a>
+    <a class="sc-nav-indicator" #menuIndicator></a>
+  </div>
+  <router-outlet></router-outlet>
+</ion-tabs>

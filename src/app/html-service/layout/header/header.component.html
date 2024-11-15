@@ -1,0 +1,21 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title> <strong class="title"> {{ pageTitle }}</strong> <strong class="line"> | </strong> Tiny Baby
+      Grow</ion-title>
+    <ion-buttons slot="start">
+      <div class="rounded-img">
+        <img src="../../assets/icon/3.png" alt="Logo" class="header-logo" />
+      </div>
+    </ion-buttons>
+    <ion-buttons class="border-btn" slot="end">
+      <ion-button (click)="onPresentPopover()">
+        <ion-icon class="green" name="stats-chart-outline"></ion-icon>
+      </ion-button>
+      <ion-popover #popover [animated]="true" [isOpen]="isOpen" (didDismiss)="isOpen = false">
+        <ng-template>
+          <app-notif></app-notif>
+        </ng-template>
+      </ion-popover>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
