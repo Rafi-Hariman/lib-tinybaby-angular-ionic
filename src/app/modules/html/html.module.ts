@@ -5,12 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/types';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { FooterComponent } from './../../html-service/layout/footer/footer.component';
-import { HeaderComponent } from './../../html-service/layout/header/header.component';
-import { LoaderComponent } from './../../html-service/layout/loader/loader.component';
-import { RefreshComponent } from './../../html-service/layout/refresh/refresh.component';
-import { NotifComponent } from './../../html-service/layout/notif/notif.component';
-import { SvchomeComponent } from './../../html-service/page-service/svchome/svchome.component';
+import { FooterComponent } from '../../html-service/layout/footer/footer.component';
+import { HeaderComponent } from '../../html-service/layout/header/header.component';
+import { LoaderComponent } from '../../html-service/layout/loader/loader.component';
+import { RefreshComponent } from '../../html-service/layout/refresh/refresh.component';
+import { NotifComponent } from '../../html-service/layout/notif/notif.component';
+import { SvchomeComponent } from '../../html-service/page-service/svchome/svchome.component';
 import { PopoverbabyinfoComponent } from '../../html-service/layout/popoverbabyinfo/popoverbabyinfo.component';
 
 import { ModalbottomsheetComponent } from '../../html-service/modal/modal-template/modalbottomsheet/modalbottomsheet.component';
