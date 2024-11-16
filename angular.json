@@ -39,7 +39,7 @@
               "src/assets/script/script.js",
               "node_modules/swiper/swiper-bundle.min.js"
             ],
-            "serviceWorker": false,
+            "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
