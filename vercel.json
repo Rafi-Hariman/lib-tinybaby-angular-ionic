@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "routes": [
+      {
+        "src": "/service-worker.js",
+        "dest": "/browser/service-worker.js"
+      },
+      {
+        "src": "/ngsw-worker.js",
+        "dest": "/browser/ngsw-worker.js"
+      },
+      {
+        "src": "/ngsw.json",
+        "dest": "/browser/ngsw.json"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/server/main.js"
+      }
+    ]
+  }
+  
