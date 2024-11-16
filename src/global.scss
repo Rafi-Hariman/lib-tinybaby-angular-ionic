@@ -46,6 +46,7 @@ $app-theme: mat.define-theme((
 @import "~@ionic/angular/css/flex-utils.css";
 
 @import "~swiper/swiper-bundle.css";
+// @import "~swiper/swiper-bundle.min.css";
 
 .mat-typography h1 {
   font: none;
