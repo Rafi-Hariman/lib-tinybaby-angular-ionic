@@ -1,0 +1,32 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "dist/app/browser/**/*",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "dist/app/server/main.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/service-worker.js",
+        "dest": "/browser/service-worker.js"
+      },
+      {
+        "src": "/ngsw-worker.js",
+        "dest": "/browser/ngsw-worker.js"
+      },
+      {
+        "src": "/ngsw.json",
+        "dest": "/browser/ngsw.json"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/server/main.js"
+      }
+    ]
+  }
+  
