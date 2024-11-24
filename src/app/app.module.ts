@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CommonModule } from '@angular/common';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DataService } from './data.service';
 
 
 
@@ -34,7 +35,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     provideClientHydration(withHttpTransferCacheOptions({
       includePostRequests: true
     })),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    DataService,
   ],
   bootstrap: [AppComponent],
 

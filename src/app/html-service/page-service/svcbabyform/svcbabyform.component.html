@@ -8,8 +8,6 @@
       </span>
     </h1>
   </div>
-
-
   <mat-stepper>
     <!-- Step 1: Informasi Bayi -->
     <mat-step label="Informasi Bayi">
@@ -46,9 +44,9 @@
         <fieldset>
           <legend>Analisa bayi umur {{ babyData.age }} bulan</legend>
           <div *ngIf="questions[babyData.age]">
-            <div style="overflow-y: scroll;" *ngFor="let question of questions[babyData.age]">
+            <div style="overflow-y: scroll;"  *ngFor="let question of questions[babyData.age]; let i = index">
               <ion-item>
-                <ion-checkbox color="tertiary" [checked]="false">
+                <ion-checkbox color="tertiary" [(ngModel)]="checkedQuestions[i]" (ionChange)="onCheckboxChange(i)">
                   <div class="ion-text-wrap">{{ question }}</div>
                 </ion-checkbox>
               </ion-item>
@@ -61,18 +59,11 @@
       </form>
       <div style="display: flex; flex-direction: row-reverse">
         <ion-button shape="round" id="present-alert">Simpan dan lanjutkan</ion-button>
-        <button mat-button matStepperPrevious>Sebelumnya</button>
+        <button mat-button matStepperPrevious (click)="resetCheckboxes()">Sebelumnya</button>
       </div>
     </mat-step>
   </mat-stepper>
-  <ion-alert
-  trigger="present-alert"
-  header="Kami telah merangkum data anda"
-  message="Anda akan dialihkan ke halaman Riset"
-  [buttons]="alertButtons"
-  (didDismiss)="setResult($event)"
-></ion-alert>
-
-
-
+  <ion-alert trigger="present-alert" header="Kami telah merangkum data anda"
+    message="Anda akan dialihkan ke halaman Riset" [buttons]="alertButtons"
+    (didDismiss)="setResult($event)"></ion-alert>
 </div>

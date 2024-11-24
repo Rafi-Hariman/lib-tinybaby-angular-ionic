@@ -34,6 +34,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
 import { Chart } from 'chart.js';
+import { DataService } from '../../data.service';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { Chart } from 'chart.js';
   ],
   providers: [
     {provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}},
+    DataService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

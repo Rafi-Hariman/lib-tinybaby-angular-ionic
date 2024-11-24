@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../../../data.service';
 
 interface Age {
   value: string;
@@ -14,19 +15,41 @@ interface Age {
 })
 export class SvcbabyformComponent implements OnInit {
 
+  selectedAnswers: { [question: string]: boolean } = {};
+  checkedQuestions: boolean[] = [];
+
   babyData = {
     age: 0,
     weight: null,
     height: null,
   }
+  dataCheckbox: any;
 
 
   constructor(
     private formBuilder: FormBuilder,
-    private routerSvc: Router
+    private routerSvc: Router,
+    private dataSvc: DataService,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    const ageQuestionsCount = this.questions[this.babyData.age]?.length || 0;
+    this.checkedQuestions = new Array(ageQuestionsCount).fill(false);
+  }
+
+  getCheckedCount(): number {
+    return this.checkedQuestions.filter(checked => checked).length;
+  }
+
+  // Update variabel ketika checkbox diubah (opsional)
+  onCheckboxChange(index: number) {
+    console.log(`Checkbox ${index + 1} is checked:`, this.checkedQuestions[index]);
+    this.dataCheckbox = this.checkedQuestions[index].valueOf();
+  }
+
+  resetCheckboxes() {
+    this.checkedQuestions = new Array(this.questions[this.babyData.age]?.length || 0).fill(false);
+  }
 
   questions: { [age: number]: string[] } = {
     1: [
@@ -46,31 +69,24 @@ export class SvcbabyformComponent implements OnInit {
       'Apakah bayi dapat menahan kepala tetap tegak dan stabil saat ditopang duduk?',
       'Apakah bayi mulai meraih dan memegang mainan atau benda di dekatnya?',
       'Apakah bayi sering menggenggam tangan Anda atau benda lainnya dengan kuat?',
-      'Apakah bayi melakukan gerakan menendang-nendang dengan kaki saat berbaring?',
-      'Apakah bayi dapat mengikuti gerakan benda atau orang dengan matanya?',
-      'Apakah bayi merespons suara dengan menggerakkan kepala atau mata ke arah suara?',
-      'Apakah bayi mulai mengenali suara dan wajah orang tuanya?',
     ],
     4: [
       'Apakah bayi mulai tertawa atau cekikikan ketika diajak bermain?',
       'Apakah bayi dapat menggulingkan tubuhnya dari posisi tengkurap ke telentang?',
       'Apakah bayi mulai memperhatikan tangannya sendiri?',
       'Apakah bayi dapat menggenggam mainan kecil yang diberikan kepadanya?',
-      'Apakah bayi mulai membuat suara-suara yang lebih variatif seperti "ba" atau "ga"?',
     ],
     5: [
       'Apakah bayi dapat menggulingkan tubuhnya dari telentang ke tengkurap?',
       'Apakah bayi mulai mengangkat tubuh bagian atas menggunakan tangan saat tengkurap?',
       'Apakah bayi dapat memegang mainan dengan satu tangan?',
       'Apakah bayi mulai menunjukkan rasa ingin tahu terhadap benda di sekitarnya?',
-      'Apakah bayi menunjukkan respons yang jelas ketika mendengar suara ibunya?',
     ],
     6: [
       'Apakah bayi mulai belajar duduk tanpa bantuan?',
       'Apakah bayi mulai meraih benda yang jauh dari jangkauannya?',
       'Apakah bayi mulai mengenali namanya ketika dipanggil?',
       'Apakah bayi dapat memindahkan mainan dari satu tangan ke tangan lainnya?',
-      'Apakah bayi mulai memasukkan benda ke mulutnya untuk mengeksplorasi?',
     ],
     7: [
       'Apakah bayi mulai merangkak atau mencoba untuk merangkak?',
@@ -107,14 +123,12 @@ export class SvcbabyformComponent implements OnInit {
       'Apakah bayi mulai melangkah sendiri tanpa bantuan?',
       'Apakah bayi mulai menunjukkan minat dalam membalik halaman buku?',
       'Apakah bayi dapat menunjukkan benda tertentu ketika diminta?',
-      'Apakah bayi mulai merespons perintah sederhana seperti "datang ke sini"?',
     ],
     13: [
       'Apakah anak mulai menumpuk 2-3 balok kecil?',
       'Apakah anak mulai menunjuk benda yang menarik perhatiannya?',
       'Apakah anak dapat menunjuk benda atau gambar saat Anda menyebutkan namanya?',
       'Apakah anak mulai memahami perintah sederhana seperti "ambil bola"?',
-      'Apakah anak dapat meniru gerakan sederhana seperti tepuk tangan atau melambai?',
     ],
     14: [
       'Apakah anak mulai memegang sendok dengan lebih baik saat makan?',
@@ -271,7 +285,7 @@ export class SvcbabyformComponent implements OnInit {
       role: 'confirm',
       handler: () => {
         console.log('Alert confirmed');
-        this.navigaetToChart()
+        this.navigateToChart()
       },
     },
   ];
@@ -280,9 +294,20 @@ export class SvcbabyformComponent implements OnInit {
     console.log(`Dismissed with role: ${ev.detail.role}`);
   }
 
-  navigaetToChart() {
-   this.routerSvc.navigate(['/page/chart-baby']);
+  navigateToChart() {
+    const checkedCount = this.getCheckedCount();
+    console.log('Checkbox count:', checkedCount);
+    
+    this.routerSvc.navigate(['/page/chart-baby'], {
+      queryParams: {
+        age: this.babyData.age,
+        weight: this.babyData.weight,
+        height: this.babyData.height,
+        checkbox : checkedCount
+      }
+    });
   }
+
 
 
 }

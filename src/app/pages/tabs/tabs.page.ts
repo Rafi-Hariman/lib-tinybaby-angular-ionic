@@ -71,7 +71,7 @@ export class TabsPage implements OnInit, AfterViewInit {
   }
 
   onClickPie() {
-    this.routerSvc.navigate(['/page/target']);
+    this.routerSvc.navigate(['/page/chart-baby']);
   }
 
   onClickSettings() {
@@ -85,7 +85,7 @@ export class TabsPage implements OnInit, AfterViewInit {
       this.activateLink(1);
     } else if (url.includes('/page/home')) {
       this.activateLink(2);
-    } else if (url.includes('/page/target')) {
+    } else if (url.includes('/page/chart-baby')) {
       this.activateLink(3);
     } else if (url.includes('/page/settings')) {
       this.activateLink(4);

@@ -7,15 +7,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint",
-    "dev:ssr": "ng run app:serve-ssr",
-    "serve:ssr": "node dist/app/server/main.js",
-    "build:ssr": "ng build --configuration production && ng run app:server",
-    "build:ssr:pwa": "ng build --configuration production && ng run app:server",
-    "prerender": "ng run app:prerender",
-    "deploy": "npm run build:ssr:pwa && vercel --prod"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {

@@ -1,142 +1,216 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ChartConfiguration, ChartType } from 'chart.js';
-import { Chart, registerables } from 'chart.js'
+import { ActivatedRoute } from '@angular/router';
+import { Chart, ChartConfiguration, registerables } from 'chart.js';
+
 Chart.register(...registerables);
+
 @Component({
   selector: 'app-svcchartbaby',
   templateUrl: './svcchartbaby.component.html',
   styleUrls: ['./svcchartbaby.component.scss'],
 })
 export class SvcchartbabyComponent implements OnInit, AfterViewInit {
+  delayed: boolean = false;
 
-  chartPolarArea: any;
-  chartBar: any;
-  chartLine: any;
+  chart: any;
+  age: number | null = null;
+  weight: number | null = null; // Berat bayi dalam ons
+  height: number | null = null; // Tinggi bayi dalam cm
+  checkboxCount: number | null = null;
+  weightPercentage: number | null = null;
+  heightPercentage: number | null = null;
+  skillPercentage: number | null = null; // Persentase perkembangan kemampuan
 
-  public configPolarArea: ChartConfiguration = {
-    type: 'polarArea',
+  // Target kemampuan dan bicara
+  targetSkills = [
+    "Tersenyum",
+    "Mengangkat kepala",
+    "Berguling",
+    "Duduk tanpa bantuan",
+    "Merangkak",
+    "Berjalan dengan bantuan",
+    "Berjalan tanpa bantuan",
+    "Mengucapkan kata pertama",
+    "Menyusun 2 kata sederhana",
+    "Menyebutkan nama benda sederhana",
+  ];
+
+
+  // Target Data dalam ons dan centimeter
+  targetWeight = Array.from({ length: 100 }, (_, i) => 50 + i * 5); // Increment by 5 cm for each month
+  targetHeight = Array.from({ length: 1500 }, (_, i) => 50 + i * 5); // Increment by 5 cm for each month
+
+  config: ChartConfiguration = {
+    type: 'line', // Set base type as 'line'
     data: {
-      labels: ['Germany', 'Spain', 'Italy', 'France', 'Poland', 'Czech Republic'],
+      labels: [],
       datasets: [
         {
-          label: 'Population Density',
-          data: [232, 150, 200, 125, 110, 80],
-          backgroundColor: [
-            'rgba(101, 58, 252, 1)',
-            'rgba(248, 69, 117, 1)',
-            'rgba(234, 236, 239, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-          ],
-          borderColor: [
-            'rgba(101, 58, 252, 1)',
-            'rgba(248, 69, 117, 1)',
-            'rgba(234, 236, 239, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-          ],
-
-          borderWidth: 1,
+          label: 'Berat Bayi (ons)',
+          data: [],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderWidth: 2,
+          type: 'bar', // Set this dataset to be displayed as a bar chart
+        },
+        {
+          label: 'Tinggi Bayi (cm)',
+          data: [],
+          borderColor: 'rgba(153, 102, 255, 1)',
+          backgroundColor: 'rgba(153, 102, 255, 0.2)',
+          borderWidth: 2,
+          type: 'bar', // Set this dataset to be displayed as a bar chart
+        },
+        {
+          label: 'Target Berat (ons)',
+          data: [],
+          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderWidth: 2,
+          type: 'line', // Target weight as a line chart
+          tension: 0.4, // Smooth the line
+        },
+        {
+          label: 'Target Tinggi (cm)',
+          data: [],
+          borderColor: 'rgba(255, 206, 86, 1)',
+          backgroundColor: 'rgba(255, 206, 86, 0.2)',
+          borderWidth: 2,
+          type: 'line', // Target height as a line chart
+          tension: 0.4, // Smooth the line
         },
       ],
     },
     options: {
+      animation: {
+        onComplete: () => {
+          this.delayed = true;
+        },
+        delay: (context) => {
+          let delay = 0;
+          if (context.type === 'data' && context.mode === 'default' && !this.delayed) {
+            delay = context.dataIndex * 300 + context.datasetIndex * 100;
+          }
+          return delay;
+        },
+      },
+
       responsive: true,
       plugins: {
         legend: {
           display: true,
           position: 'bottom',
-          align: 'center',
-          labels: {
-            boxWidth: 30,
-            boxHeight: 20,
-          }
         },
       },
-    }
-  };
-
-  public configBar: any = {
-    type: 'bar',
-    data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          backgroundColor: 'rgb(255, 99, 132)',
-        }
-      ]
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Usia (Bulan)',
+          },
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Nilai (ons/cm)',
+          },
+        },
+      },
     },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          display: true,
-          position: 'top',
-          align: 'end',
-        },
-        subtitle: {
-          display: true,
-          text: 'Custom Chart Subtitle',
-          font: {weight: 'bold'},
-        },
-        
-      },
-    }
   };
+  currentYear: number;
 
-    public configLine: ChartConfiguration = {
-    type: 'line',
-    data: {
-      labels: Array.from({ length: 15 }, (_, i) => -80 + i * 5), // -80 to -10
-      datasets: [
-        {
-          label: 'Data one',
-          data: [25, 35, 45, 60, 70, 75, 70, 65, 55, 50, 45, 35, 30, 25, 20],
-          borderColor: 'blue',
-          backgroundColor: 'rgba(0, 0, 255, 0.1)',
-          fill: true,
-          tension: 0.4,
-        },
-        {
-          label: 'Data two',
-          data: [20, 25, 30, 40, 50, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15],
-          borderColor: 'magenta',
-          backgroundColor: 'rgba(255, 0, 255, 0.1)',
-          fill: true,
-          tension: 0.4,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          display: true,
-          position: 'bottom',
-          align: 'center',
-          labels: {
-            boxWidth: 30,
-            boxHeight: 20,
-          }
-        },
-      },
-    }
-  };
-
-  constructor() { }
+  constructor(private route: ActivatedRoute) { 
+    this.currentYear = new Date().getDate();
+  }
+  currentDate: string = new Date().toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 
   ngOnInit() {
-    this.chartPolarArea = new Chart('ChartPolarArea', this.configPolarArea);
-    this.chartLine = new Chart('ChartLine', this.configLine);
-    this.chartBar = new Chart('ChartBar', this.configBar);
+    console.log('Current Year:', this.currentYear);
+    
+    this.route.queryParams.subscribe((params) => {
+      this.age = +params['age'] || null;
+      this.weight = +params['weight'] || null; // Berat bayi dari input dalam ons
+      this.height = +params['height'] || null; // Tinggi bayi dari input dalam cm
+      this.checkboxCount = +params['checkbox'] || null;
+
+      console.log('Params:', {
+        age: this.age,
+        weight: this.weight,
+        height: this.height,
+        checkboxCount: this.checkboxCount,
+      });
+
+      this.updateChart();
+    });
   }
 
   ngAfterViewInit(): void {
-
+    this.updateChart();
   }
 
+  updateChart() {
+    if (this.chart) this.chart.destroy(); // Destroy existing chart if any
+  
+    // Generate labels for X-axis (months up to the age parameter)
+    const labels = Array.from({ length: this.age || 0 }, (_, i) => `Bulan ${i + 1}`);
+    this.config.data.labels = labels;
+  
+    // Baby's weight and height data with decreasing values
+    const babyWeightData = this.age
+      ? Array.from({ length: this.age }, (_, i) => Math.max((this.weight || 0) + i * 5, 0)) // Berat bayi (ons) menurun 5 setiap bulan
+      : [];
+    const babyHeightData = this.age
+      ? Array.from({ length: this.age }, (_, i) => Math.max((this.height || 0) + i * 5, 0)) // Tinggi bayi (cm) menurun 5 setiap bulan
+      : [];
+  
+    // Target weight and height data
+    const targetWeightData = this.targetWeight.slice(0, this.age || 0).map((weight, index) => {
+      const adjustment = (this.checkboxCount || 0) * 50; // Setiap checkbox menambah 50 ons
+      return weight + adjustment;
+    });
+    const targetHeightData = this.targetHeight.slice(0, this.age || 0);
+  
+    // Update datasets
+    this.config.data.datasets[0].data = babyWeightData; // Berat bayi
+    this.config.data.datasets[1].data = babyHeightData; // Tinggi bayi
+    this.config.data.datasets[2].data = targetWeightData; // Target berat
+    this.config.data.datasets[3].data = targetHeightData; // Target tinggi
+  
+    // Calculate percentage for the last month
+    if (this.age && this.age > 0) {
+      this.weightPercentage = this.calculatePercentage(
+        this.weight,
+        targetWeightData[this.age - 1] // Target terakhir
+      );
+  
+      this.heightPercentage = this.calculatePercentage(
+        this.height,
+        targetHeightData[this.age - 1] // Target terakhir
+      );
+  
+      this.skillPercentage = this.calculateSkillPercentage(this.checkboxCount, 4); // Total checkbox hanya 4
+    }
+  
+    // Create chart
+    this.chart = new Chart('babyChart', this.config);
+  }
+
+  calculateSkillPercentage(checkboxCount: number | null, totalSkills: number): number {
+    if (checkboxCount !== null && totalSkills > 0) {
+      return Math.min((checkboxCount / totalSkills) * 100, 100); // Batas maksimum 100%
+    }
+    return 0;
+  }
+
+  calculatePercentage(actual: number | null, target: number | null): number {
+    if (actual !== null && target !== null && target > 0) {
+      return Math.min((actual / target) * 100, 100); // Batas maksimum 100%
+    }
+    return 0;
+  }
 }

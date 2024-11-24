@@ -3,111 +3,65 @@
     <div class="bg-white p-6 rounded-lg shadow-md">
       <div class="flex items-center justify-between mb-4">
         <h1 class="text-lg font-semibold">
-          Countries compared by population density and total area.
+          Pada Usia {{ age }} Bulan , Berat Badan Bayi Anda {{ weight }} Ons, Tinggi Badan {{ height }} Cm
         </h1>
         <i class="fas fa-sync-alt text-xl">
         </i>
       </div>
-      <div class="text-sm text-gray-500 mb-2">
-        January, 221
-      </div>
       <div class="text-lg font-semibold mb-4">
-        More densely populate
-      </div>
-      <div class="flex items-center justify-between mb-4">
-        <div class="text-blue-500 text-lg font-semibold">
-          98%
-        </div>
-        <i class="fas fa-chart-line text-blue-500 text-xl">
-        </i>
+        Kalkulasi berdasarkan diagaram
       </div>
       <div class="c">
-        <canvas id="ChartPolarArea" style="height: 40vh; width: 80vw;">
-          {{chartPolarArea}}
+        <canvas id="babyChart" style="height: 40vh; width: 80vw;">
         </canvas>
       </div>
     </div>
 
-    <div class="gaps">
+    <div style="margin-top: 2rem;">
       <div class="bg-white p-6 rounded-lg shadow-md">
-        <!-- <div class="c"> -->
-        <canvas id="ChartLine" style="height: 40vh; width: 80vw;">
-          {{chartLine}}
-        </canvas>
-        <!-- </div> -->
-      </div>
-    </div>
-
-    <div class="bg-white p-6 rounded-lg shadow-md">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-lg font-bold">
-          Top Performer
-        </h2>
-        <div class="bg-gray-100 p-2 rounded-lg">
-          <p class="text-gray-500">
-            June - July
-          </p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-red-100 p-4 rounded-lg text-center">
-          <img alt="Image of Nivaan" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
-            src="https://storage.googleapis.com/a1aa/image/GKhGfDgVJjRWQqL8DXOQal1d2hCKqURkVycfYCAYUQOn7nwTA.jpg"
-            width="100" />
-          <h3 class="text-lg font-bold">
-            Nivaan
-          </h3>
-          <p class="text-gray-500">
-            Jr. Knights
-          </p>
-          <p class="text-2xl font-bold">
-            90%
-          </p>
-          <p class="text-gray-500">
-            Attendance
-          </p>
-          <div class="bg-red-500 text-white p-2 rounded-lg mt-2">
-            Blue Badge
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-lg font-bold">
+            Detail
+          </h2>
+          <div class="bg-gray-100 p-2 rounded-lg">
+            <p class="text-gray-500">
+              Bayi umur {{ age }} bulan
+            </p>
           </div>
         </div>
-        <div class="bg-blue-100 p-4 rounded-lg text-center">
-          <img alt="Image of Navya" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
-            src="https://storage.googleapis.com/a1aa/image/oxyD1wda7bKeMKRQrKjeEIDvPZrRzWp2UBGfEzf33eQPdfJ8E.jpg"
-            width="100" />
-          <h3 class="text-lg font-bold">
-            Navya
-          </h3>
-          <p class="text-gray-500">
-            Gladiators
-          </p>
-          <p class="text-2xl font-bold">
-            80%
-          </p>
-          <p class="text-gray-500">
-            Attendance
-          </p>
-          <div class="bg-blue-800 text-white p-2 rounded-lg mt-2">
-            Pink Badge
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-red-100 p-4 rounded-lg text-center">
+            <img alt="Image of Nivaan" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
+              src="https://rvs-results-summary-component.vercel.app/assets/images/icon-reaction.svg"
+              width="100" />
+            <h3 class="text-lg font-bold">
+              Presentase Berat Badan
+            </h3>
+            <p class="text-2xl font-bold" *ngIf="weightPercentage !== null">
+              {{ weightPercentage.toFixed(2) }}%
+            </p>
           </div>
-        </div>
-        <div class="bg-pink-100 p-4 rounded-lg text-center">
-          <img alt="Image of Anugrah" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
-            src="https://storage.googleapis.com/a1aa/image/9tK0lIWTYBJFFJUSWT9x2zkAXeL0wyrR7HvqkPT7ck419T4JA.jpg"
-            width="100" />
-          <h3 class="text-lg font-bold">
-            Anugrah
-          </h3>
-          <p class="text-gray-500">
-            Spartans
-          </p>
-          <p class="text-2xl font-bold">
-            70%
-          </p>
-          <p class="text-gray-500">
-            Attendance
-          </p>
-          <div class="bg-pink-300 text-white p-2 rounded-lg mt-2">
-            Orange Badge
+          <div class="bg-pink-100 p-4 rounded-lg text-center">
+            <img alt="Image of Anugrah" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
+              src="https://rvs-results-summary-component.vercel.app/assets/images/icon-memory.svg"
+              width="100" />
+              <h3 class="text-lg font-bold">
+                Presentase Kemampuan dan Bicara
+              </h3>
+              <p class="text-2xl font-bold" *ngIf="skillPercentage !== null">
+                {{ skillPercentage.toFixed(2) }}%
+              </p>
+          </div>
+          <div class="bg-blue-100 p-4 rounded-lg text-center">
+            <img alt="Image of Navya" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
+              src="https://rvs-results-summary-component.vercel.app/assets/images/icon-reaction.svg"
+              width="100" />
+              <h3 class="text-lg font-bold">
+                Presentase Tinggi Badan
+              </h3>
+              <p class="text-2xl font-bold" *ngIf="heightPercentage !== null">
+                {{ heightPercentage.toFixed(2) }}%
+              </p>
           </div>
         </div>
       </div>
