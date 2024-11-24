@@ -1,62 +1,150 @@
-.sc-bottom-bar {
-  position: absolute;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+ion-tabs {
+  background: var(--ion-color-secondary);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.navigation {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 69px;
+  background: linear-gradient(to bottom, #ffffff 30%, #d3fffa);
+  display: grid;
+  grid-template-rows: auto;
+  justify-items: center;
+  border-radius: 30px 30px 0px 0px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.navigation ul {
   display: flex;
-  padding: 16px 36px;
-  justify-content: space-between;
-  width: 600px;
-  margin: auto;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 64px;
-  font-size: 26px;
-  background-image: radial-gradient(
-    circle at 36px 6px,
-    transparent 36px,
-    #ffffff 37px
-  );
-  filter: drop-shadow(0px -1px 6px rgba(0, 0, 0, 0.08))
-    drop-shadow(0px -2px 12px rgba(0, 0, 0, 0.12));
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  transition: cubic-bezier(0.57, 0.23, 0.08, 0.96) 0.45s;
+  width: 350px;
 }
 
-.sc-nav-indicator {
-  position: absolute;
-  width: 56px;
-  height: 56px;
-  bottom: 27px;
-  margin: auto;
-  left: 0;
-  background-color: rgb(37 99 235);
-  box-shadow: 0 0 20px 1px rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  transition: cubic-bezier(0.45, 0.73, 0, 0.59) 0.4s;
-}
-
-.sc-menu-item {
-  color: black;
-  transition: ease-in-out 0.5s;
-  cursor: pointer;
-}
-
-.sc-current {
+.navigation ul li {
   position: relative;
-  color: #ffffff;
-  z-index: 3;
-  transform: translate3d(0px, -22px, 0px);
+  width: 70px;
+  height: 70px;
+  list-style: none;
+  z-index: 1;
 }
 
-@media (max-width: 768px) {
-  .sc-bottom-bar {
-    width: auto;
-    height: 65px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+.navigation ul li a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  padding-left: 2%;
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  line-height: 75px;
+  font-size: 1.5em;
+  text-align: center;
+  color: #0f2d79;
+  transition: 0.3s;
+}
+
+.navigation ul li.active a .icon {
+  transform: translateY(-29px);
+}
+
+.navigation ul li.active a .text {
+  opacity: 1;
+  transform: translateY(10px);
+}
+
+.navigation ul li a .circle {
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  transform: translateY(-37px) scale(0);
+}
+
+.navigation ul li.active a .circle {
+  transition: 0.3s;
+  transition-delay: 0.3s;
+  transform: translateY(-37px) scale(1);
+}
+
+.indicator {
+  position: absolute;
+  top: -43%;
+  width: 67px;
+  height: 67px;
+  background: #0f2d79;
+  border: 6px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator {
+  transform: translate(1px);
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator {
+  transform: translate(72px)
+}
+
+.navigation ul li:nth-child(3).active ~ .indicator {
+  transform: translate(143px);
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator {
+  transform: translate(212px);
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator {
+  transform: translate(282px)
+}
+
+.navigation ul li a .icon:hover {
+  color: aqua;
+}
+.navigation ul li a .icon.hover-active {
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .navigation ul li.active a .icon {
+    transform: translateY(-34px);
+  }
+
+  .navigation {
+    position: fixed;
+    bottom: 0px;
+    left: 28%;
+    width: 50%;
+    height: 80px;
+    background: #ffffff;
+    display: grid;
+    grid-template-rows: auto;
+    justify-items: center;
+    border-radius: 30px 30px 0px 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
   }
 }

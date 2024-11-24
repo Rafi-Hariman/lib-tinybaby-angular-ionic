@@ -1,257 +1,118 @@
 <ion-content>
   <div class="bg-gray-100 p-4 sm:p-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-      <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
-        <div class="bg-blue-600 text-white p-4 rounded-full">
-          <i class="fas fa-user fa-2x">
-          </i>
-        </div>
-        <div class="text-right">
-          <h2 class="text-2xl font-bold">
-            534
-          </h2>
-          <p class="text-gray-500">
-            Coaches
-          </p>
-        </div>
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <div class="flex items-center justify-between mb-4">
+        <h1 class="text-lg font-semibold">
+          Countries compared by population density and total area.
+        </h1>
+        <i class="fas fa-sync-alt text-xl">
+        </i>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
-        <div class="bg-blue-600 text-white p-4 rounded-full">
-          <i class="fas fa-child fa-2x">
-          </i>
-        </div>
-        <div class="text-right">
-          <h2 class="text-2xl font-bold">
-            9.7k
-          </h2>
-          <p class="text-gray-500">
-            Kids
-          </p>
-        </div>
+      <div class="text-sm text-gray-500 mb-2">
+        January, 221
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
-        <div class="bg-blue-600 text-white p-4 rounded-full">
-          <i class="fas fa-dollar-sign fa-2x">
-          </i>
+      <div class="text-lg font-semibold mb-4">
+        More densely populate
+      </div>
+      <div class="flex items-center justify-between mb-4">
+        <div class="text-blue-500 text-lg font-semibold">
+          98%
         </div>
-        <div class="text-right">
-          <h2 class="text-2xl font-bold">
-            50 M
-          </h2>
-          <p class="text-gray-500">
-            Revenue
-          </p>
-        </div>
+        <i class="fas fa-chart-line text-blue-500 text-xl">
+        </i>
+      </div>
+      <div class="c">
+        <canvas id="ChartPolarArea" style="height: 40vh; width: 80vw;">
+          {{chartPolarArea}}
+        </canvas>
       </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-lg font-bold mb-4">
-          Today's Status
-        </h2>
-        <div class="grid grid-cols-3 gap-4 mb-4">
-          <div class="text-center">
-            <h3 class="text-2xl font-bold">
-              8.7K
-            </h3>
-            <p class="text-gray-500">
-              Total Present
-            </p>
-          </div>
-          <div class="text-center">
-            <h3 class="text-2xl font-bold">
-              99
-            </h3>
-            <p class="text-gray-500">
-              Registrations
-            </p>
-          </div>
-          <div class="text-center">
-            <h3 class="text-2xl font-bold">
-              30
-            </h3>
-            <p class="text-gray-500">
-              Total Sessions
-            </p>
-          </div>
-        </div>
-        <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-between">
-          <div class="bg-red-500 h-full w-2 rounded-lg">
-          </div>
-          <div class="ml-4">
-            <p class="text-gray-500">
-              Today's WOD
-            </p>
-            <h3 class="text-xl font-bold">
-              Filthy Fifty
-            </h3>
-            <p class="text-gray-500">
-              Mecton
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-lg font-bold mb-4">
-          Batch Performance
-        </h2>
-        <p class="text-gray-500 mb-4">
-          All information in percentage(%)
-        </p>
-        <div class="flex items-center mb-4">
-          <div class="w-4 h-4 bg-red-500 rounded-full mr-2">
-          </div>
-          <p class="text-gray-500">
-            Jr. Knights Performance
-          </p>
-        </div>
-        <div class="flex items-center mb-4">
-          <div class="w-4 h-4 bg-blue-800 rounded-full mr-2">
-          </div>
-          <p class="text-gray-500">
-            Gladiators Performance
-          </p>
-        </div>
-        <div class="flex items-center mb-4">
-          <div class="w-4 h-4 bg-pink-300 rounded-full mr-2">
-          </div>
-          <p class="text-gray-500">
-            Spartans Performance
-          </p>
-        </div>
-        <div class="flex justify-between items-end h-32">
-          <div class="bg-red-500 w-8 h-24">
-          </div>
-          <div class="bg-blue-800 w-8 h-16">
-          </div>
-          <div class="bg-pink-300 w-8 h-20">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-lg font-bold mb-4">
-          Revenue Generated
-        </h2>
-        <div class="flex items-center mb-4">
-          <div class="w-4 h-4 bg-red-500 rounded-full mr-2">
-          </div>
-          <p class="text-gray-500">
-            Online 50% of total revenue
-          </p>
-        </div>
-        <div class="flex items-center mb-4">
-          <div class="w-4 h-4 bg-blue-800 rounded-full mr-2">
-          </div>
-          <p class="text-gray-500">
-            Offline 30% of total revenue
-          </p>
-        </div>
-        <div class="flex items-center mb-4">
-          <div class="w-4 h-4 bg-pink-300 rounded-full mr-2">
-          </div>
-          <p class="text-gray-500">
-            Events 20% of total revenue
-          </p>
-        </div>
-        <div class="relative">
-          <div class="w-32 h-32 rounded-full border-8 border-red-500 border-t-blue-800 border-r-pink-300">
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <h3 class="text-2xl font-bold">
-              50M
-            </h3>
-          </div>
-          <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white p-2 rounded-lg shadow-md">
-            <h3 class="text-lg font-bold">
-              25M
-            </h3>
-            <p class="text-gray-500">
-              Offline
-            </p>
-            <p class="text-gray-500">
-              50 running batches
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-lg font-bold">
-            Top Performer
-          </h2>
-          <div class="bg-gray-100 p-2 rounded-lg">
-            <p class="text-gray-500">
-              June - July
-            </p>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="bg-red-100 p-4 rounded-lg text-center">
-            <img alt="Image of Nivaan" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
-              src="https://storage.googleapis.com/a1aa/image/GKhGfDgVJjRWQqL8DXOQal1d2hCKqURkVycfYCAYUQOn7nwTA.jpg"
-              width="100" />
-            <h3 class="text-lg font-bold">
-              Nivaan
-            </h3>
-            <p class="text-gray-500">
-              Jr. Knights
-            </p>
-            <p class="text-2xl font-bold">
-              90%
-            </p>
-            <p class="text-gray-500">
-              Attendance
-            </p>
-            <div class="bg-red-500 text-white p-2 rounded-lg mt-2">
-              Blue Badge
-            </div>
-          </div>
-          <div class="bg-blue-100 p-4 rounded-lg text-center">
-            <img alt="Image of Navya" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
-              src="https://storage.googleapis.com/a1aa/image/oxyD1wda7bKeMKRQrKjeEIDvPZrRzWp2UBGfEzf33eQPdfJ8E.jpg"
-              width="100" />
-            <h3 class="text-lg font-bold">
-              Navya
-            </h3>
-            <p class="text-gray-500">
-              Gladiators
-            </p>
-            <p class="text-2xl font-bold">
-              80%
-            </p>
-            <p class="text-gray-500">
-              Attendance
-            </p>
-            <div class="bg-blue-800 text-white p-2 rounded-lg mt-2">
-              Pink Badge
-            </div>
-          </div>
-          <div class="bg-pink-100 p-4 rounded-lg text-center">
-            <img alt="Image of Anugrah" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
-              src="https://storage.googleapis.com/a1aa/image/9tK0lIWTYBJFFJUSWT9x2zkAXeL0wyrR7HvqkPT7ck419T4JA.jpg"
-              width="100" />
-            <h3 class="text-lg font-bold">
-              Anugrah
-            </h3>
-            <p class="text-gray-500">
-              Spartans
-            </p>
-            <p class="text-2xl font-bold">
-              70%
-            </p>
-            <p class="text-gray-500">
-              Attendance
-            </p>
-            <div class="bg-pink-300 text-white p-2 rounded-lg mt-2">
-              Orange Badge
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<app-footer></app-footer>
 
+    <div class="gaps">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <!-- <div class="c"> -->
+        <canvas id="ChartLine" style="height: 40vh; width: 80vw;">
+          {{chartLine}}
+        </canvas>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-bold">
+          Top Performer
+        </h2>
+        <div class="bg-gray-100 p-2 rounded-lg">
+          <p class="text-gray-500">
+            June - July
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-red-100 p-4 rounded-lg text-center">
+          <img alt="Image of Nivaan" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
+            src="https://storage.googleapis.com/a1aa/image/GKhGfDgVJjRWQqL8DXOQal1d2hCKqURkVycfYCAYUQOn7nwTA.jpg"
+            width="100" />
+          <h3 class="text-lg font-bold">
+            Nivaan
+          </h3>
+          <p class="text-gray-500">
+            Jr. Knights
+          </p>
+          <p class="text-2xl font-bold">
+            90%
+          </p>
+          <p class="text-gray-500">
+            Attendance
+          </p>
+          <div class="bg-red-500 text-white p-2 rounded-lg mt-2">
+            Blue Badge
+          </div>
+        </div>
+        <div class="bg-blue-100 p-4 rounded-lg text-center">
+          <img alt="Image of Navya" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
+            src="https://storage.googleapis.com/a1aa/image/oxyD1wda7bKeMKRQrKjeEIDvPZrRzWp2UBGfEzf33eQPdfJ8E.jpg"
+            width="100" />
+          <h3 class="text-lg font-bold">
+            Navya
+          </h3>
+          <p class="text-gray-500">
+            Gladiators
+          </p>
+          <p class="text-2xl font-bold">
+            80%
+          </p>
+          <p class="text-gray-500">
+            Attendance
+          </p>
+          <div class="bg-blue-800 text-white p-2 rounded-lg mt-2">
+            Pink Badge
+          </div>
+        </div>
+        <div class="bg-pink-100 p-4 rounded-lg text-center">
+          <img alt="Image of Anugrah" class="w-16 h-16 rounded-full mx-auto mb-2" height="100"
+            src="https://storage.googleapis.com/a1aa/image/9tK0lIWTYBJFFJUSWT9x2zkAXeL0wyrR7HvqkPT7ck419T4JA.jpg"
+            width="100" />
+          <h3 class="text-lg font-bold">
+            Anugrah
+          </h3>
+          <p class="text-gray-500">
+            Spartans
+          </p>
+          <p class="text-2xl font-bold">
+            70%
+          </p>
+          <p class="text-gray-500">
+            Attendance
+          </p>
+          <div class="bg-pink-300 text-white p-2 rounded-lg mt-2">
+            Orange Badge
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <app-footer></app-footer>
 </ion-content>

@@ -1,0 +1,207 @@
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+  margin-bottom: 1rem;
+}
+
+.text {
+  display: flex;
+  flex-direction: row-reverse;
+  color: var(--others-blue-default, #0277bd);
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 5px;
+  margin-left: 7px;
+}
+
+.wb {
+  text-align: end;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+:host ::ng-deep.mat-horizontal-content-container {
+  overflow: hidden;
+  padding: 0px !important;
+}
+
+// :host ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+//   background-color: white !important;
+// }
+
+// :host ::ng-deep .mat-stepper-vertical,
+// .mat-stepper-horizontal {
+//   background-color: white !important;
+// }
+
+.title span {
+  --total: calc(var(--duration) + var(--delay));
+  position: relative;
+  display: block;
+  color: transparent;
+  overflow: hidden;
+  animation: revealText 1s var(--total) forwards;
+}
+
+.title span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: rgb(6, 216, 192);
+  animation: rollIn var(--duration) var(--delay) forwards,
+    rollOut var(--duration) var(--total) forwards;
+}
+
+.title span:nth-child(2)::after {
+  border-top: 3px solid #f7d217;
+}
+
+.bg-blue-700 {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+mat-hint {
+  color: blue;
+}
+
+mat-hint {
+  text-align: end;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+form:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+}
+
+label {
+  font-family: "Nunito";
+  font-weight: 600;
+}
+
+.second {
+  margin-bottom: 10rem;
+}
+
+@media (min-width: 768px) {
+  form {
+    max-width: none;
+  }
+}
+
+fieldset {
+  border: 2px solid #0056b3;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+
+legend {
+  background-color: #0056b3 !important;
+  color: white !important;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
+  font-weight: bold !important;
+  float: none !important;
+  width: auto !important;
+  padding: none !important;
+  margin-bottom: none !important;
+  font-size: 12px !important;
+  line-height: none !important;
+}
+
+input:focus {
+  border: 1px solid #ccc;
+  /* Atur border menjadi sama seperti default saat fokus */
+  outline: none;
+  /* Menghilangkan outline */
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+@keyframes revealText {
+  to {
+    color: #000;
+  }
+}
+
+@keyframes rollIn {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rollOut {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(105%);
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
+@media (min-width: 640px) {
+  .container {
+    max-width: 100% !important;
+  }
+}

@@ -27,8 +27,6 @@ export class SvcbabyinformationComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // tes();
-    this.initSwiper();
     setTimeout(() => {
       const mockEvent = {
         clientX: window.innerWidth / 2,
@@ -48,26 +46,81 @@ export class SvcbabyinformationComponent implements OnInit, AfterViewInit {
     return await popover.present();
   }
 
-  initSwiper() {
+  slides = [
+    {
+      class: 'slide-1',
+      imgSrc: '../assets/image/bayi-3-bulan.jpeg',
+      code: 'Usia 0 sampai 3 bulan',
+      title: 'Motorik halus',
+      text: 'Pada umur dibawah 4 bulan, bayi mampu menggerakkan kepala dari satu sisi ke sisi lain,',
+      buttonClass: 'btn-1',
+      isAction: true
+    },
+    {
+      class: 'slide-2',
+      imgSrc: '../assets/image/bayi-6-bulan.jpeg',
+      code: 'Usia 4 sampai 6 bulan',
+      title: 'Motorik halus',
+      text: 'Bayi mampu menggerakkan kepala sepenuhnya, menggenggam benda dalam beberapa detik, mengarahkan matanya pada benda kecil, dan menjangkau mainan yang berjarak dengannya.',
+      buttonClass: 'btn-2',
+      isAction: true
+    },
+    {
+      class: 'slide-3',
+      imgSrc: '../assets/image/detail-bayi-9.jpeg',
+      code: 'Usia 7 sampai 9 bulan',
+      title: 'Motorik halus',
+      text: 'Bayi mampu memindahkan benda dari satu tangan ke tangan lainnya, memungut dua benda sekaligus dengan masing-masing tangan memegang satu benda, dan memungut benda sebesar kacang dengan cara meraup.',
+      buttonClass: 'btn-3',
+      isAction: true
+    },
+    {
+      class: 'slide-4',
+      imgSrc: '../assets/image/12.jpeg',
+      code: 'Usia 10 sampai 12 bulan',
+      title: 'Motorik halus',
+      text: 'Bayi akan memasukkan benda yang disukai ke mulut serta bayi mampu memegang benda kecil dengan erat',
+      buttonClass: 'btn-4',
+      isAction: true
+    },
+    {
+      class: 'slide-5',
+      imgSrc: '../assets/image/detail-bayi-18.jpeg',
+      code: 'Usia 13 sampai 18 bulan',
+      title: 'Motorik halus',
+      text: 'Bayi mampu menumpuk dua kubus atau dua benda menjadi satu.',
+      buttonClass: 'btn-5',
+      isAction: true
+    },
+    {
+      class: 'slide-6',
+      imgSrc: '../assets/image/36.jpeg',
+      code: 'Usia 19 sampai 24 bulan',
+      title: 'Motorik halus',
+      text: 'mampu menumpuk empat buah kubus menjadi satu, memungut benda kecil menggunakan ibu jari dan jari telunjuk, serta menggelindingkan bola ke arah sasaran.',
+      buttonClass: 'btn-6',
+      isAction: true
+    },
+    {
+      class: 'slide-7',
+      imgSrc: '../assets/image/bayi-24.jpg',
+      code: 'Usia 25 sampai 36 bulan',
+      title: 'Motorik halus',
+      text: 'Bayi mampu mencoret-coret kertas dengan pensil',
+      buttonClass: 'btn-7',
+      isAction: true
+    },
+  ];
 
-  }
-
-  async presentToastWa() {
-    const toast = await this.toastController.create({
-      message: 'Scroll left or down to see the baby information',
-      duration: 2000,
-      position: 'top',
-      cssClass: 'toast-twitter',
-    });
-    toast.present();
-  }
-
-  async openReadMoreModal() {
+  async openReadMoreModal(slide: any) {
     const modal = await this.modalController.create({
       component: Modal3monthComponent,
-      cssClass: 'custom-modal-class'  // Optional: Add a custom class for styling
+      cssClass: 'custom-modal-class',
+      componentProps: {
+        data: slide.buttonClass
+      }
     });
-
+  
     return await modal.present();
   }
 
